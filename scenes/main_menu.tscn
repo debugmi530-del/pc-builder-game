@@ -1,0 +1,125 @@
+[gd_scene load_steps=2 format=3 uid="uid://main_menu"]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_menu"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.08, 0.08, 0.12, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 80.0
+offset_right = 200.0
+offset_bottom = 160.0
+text = "PC BUILDER"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 64
+
+[node name="SubTitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 150.0
+offset_right = 200.0
+offset_bottom = 190.0
+text = "Симулятор сборки ПК"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.6, 0.8, 1.0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(320, 0)
+alignment = 1
+theme_override_constants/separation = 16
+
+[node name="ContinueBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(320, 60)
+text = "▶  Продолжить"
+theme_override_font_sizes/font_size = 22
+
+[node name="NewGameBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(320, 60)
+text = "✦  Новая игра"
+theme_override_font_sizes/font_size = 22
+
+[node name="SettingsBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(320, 60)
+text = "⚙  Настройки"
+theme_override_font_sizes/font_size = 22
+
+[node name="QuitBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(320, 60)
+text = "✕  Выход"
+theme_override_font_sizes/font_size = 22
+
+[node name="SettingsPanel" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_menu")
+
+[node name="ConfirmPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+
+[node name="VBox" type="VBoxContainer" parent="ConfirmPanel"]
+alignment = 1
+
+[node name="Label" type="Label" parent="ConfirmPanel/VBox"]
+text = "Начать новую игру?\nВесь прогресс будет удалён!"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+
+[node name="HBox" type="HBoxContainer" parent="ConfirmPanel/VBox"]
+alignment = 1
+
+[node name="YesBtn" type="Button" parent="ConfirmPanel/VBox/HBox"]
+custom_minimum_size = Vector2(120, 50)
+text = "Да"
+
+[node name="NoBtn" type="Button" parent="ConfirmPanel/VBox/HBox"]
+custom_minimum_size = Vector2(120, 50)
+text = "Нет"
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -30.0
+offset_right = 100.0
+offset_bottom = 0.0
+text = "v1.0"
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)

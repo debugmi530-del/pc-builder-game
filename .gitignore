@@ -1,0 +1,19 @@
+# Godot-specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+*.translation
+.godot/
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+# Build output
+build/
+*.exe.rdb
+
+# OS
+.DS_Store
+Thumbs.db

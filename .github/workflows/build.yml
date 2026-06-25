@@ -1,0 +1,58 @@
+name: Build PC Builder Game
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    name: Build Windows EXE
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Setup Godot 4
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.3.0
+          use-dotnet: false
+          include-templates: true
+
+      - name: Import project (generate .godot)
+        run: |
+          godot --headless --editor --quit 2>&1 | head -50 || true
+          sleep 2
+
+      - name: Export Windows EXE
+        run: |
+          mkdir -p build/windows
+          godot --headless --export-release "Windows Desktop" build/windows/PCBuilder.exe 2>&1
+
+      - name: Upload Windows Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: PCBuilder-Windows-${{ github.run_number }}
+          path: build/windows/
+          retention-days: 30
+
+      - name: Create Release
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: "PC Builder — Build #${{ github.run_number }}"
+          body: |
+            Автоматическая сборка #${{ github.run_number }}
+            Скачай PCBuilder.exe и запусти — установка не нужна!
+          files: build/windows/PCBuilder.exe
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
