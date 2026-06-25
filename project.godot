@@ -1,6 +1,4 @@
 ; Engine configuration file.
-; It's best edited using the editor UI and not directly,
-; but this file is for version control and advanced settings.
 config_version=5
 
 [application]
@@ -8,7 +6,6 @@ config_version=5
 config/name="PC Builder"
 config/description="3D симулятор сборки ПК"
 config/version="1.0"
-config/tags=PackedStringArray("game", "simulator")
 config/icon="res://icon.png"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
@@ -79,7 +76,3 @@ common/physics_fps=60
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="forward_plus"
 anti_aliasing/quality/msaa_3d=2
-
-[audio]
-
-buses/default_bus_layout="res://assets/audio/default_bus_layout.tres"
